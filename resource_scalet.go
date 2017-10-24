@@ -73,11 +73,6 @@ func resourceScaletCreate(d *schema.ResourceData, m interface{}) error {
 			key := fmt.Sprintf("ssh_keys.%d", i)
 			keyRef := d.Get(key).(string)
 			for _, remoteKey := range *remoteSSHKeys {
-				if remoteKey.Name == keyRef {
-					keyIDS = append(keyIDS, remoteKey.ID)
-					continue
-				}
-
 				keyID, err := strconv.ParseInt(keyRef, 10, 64)
 				if err != nil {
 					continue
