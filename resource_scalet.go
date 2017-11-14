@@ -44,6 +44,10 @@ func resourceScalet() *schema.Resource {
 				ForceNew: true,
 				Elem:     &schema.Schema{Type: schema.TypeString},
 			},
+			"public_address": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+			},
 		},
 	}
 }
@@ -90,6 +94,12 @@ func resourceScaletCreate(d *schema.ResourceData, m interface{}) error {
 		return errors.Wrap(err, "creating scalet failed")
 	}
 
+	publicAddress, err := findPublicAddress(client, scalet.CTID)
+	if err != nil {
+		return errors.Wrap(err, "search of public address failed")
+	}
+
+	d.Set("public_address", publicAddress)
 	d.SetId(strconv.FormatInt(scalet.CTID, 10))
 
 	return nil
@@ -160,4 +170,13 @@ func resourceScaletDelete(d *schema.ResourceData, m interface{}) error {
 	}
 
 	return nil
+}
+
+func findPublicAddress(client *vscale.WebClient, scaletID int64) (string, error) {
+	scalet, _, err := client.Scalet.Get(scaletID)
+	if err != nil {
+		return "", errors.Wrap(err, "getting scalet failed")
+	}
+
+	return scalet.PublicAddresses.Address, nil
 }

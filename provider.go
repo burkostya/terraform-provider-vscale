@@ -12,6 +12,7 @@ func Provider() *schema.Provider {
 			"vscale_scalet":  resourceScalet(),
 			"vscale_ssh_key": resourceSSHKey(),
 			"vscale_domain":  resourceDomain(),
+			"vscale_record":  resourceRecord(),
 		},
 		Schema: map[string]*schema.Schema{
 			"token": &schema.Schema{
