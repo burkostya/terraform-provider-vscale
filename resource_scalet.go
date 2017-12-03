@@ -99,6 +99,11 @@ func resourceScaletCreate(d *schema.ResourceData, m interface{}) error {
 		return errors.Wrap(err, "search of public address failed")
 	}
 
+	d.SetConnInfo(map[string]string{
+		"type": "ssh",
+		"host": publicAddress,
+	})
+
 	d.Set("public_address", publicAddress)
 	d.SetId(strconv.FormatInt(scalet.CTID, 10))
 
