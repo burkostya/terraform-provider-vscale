@@ -6,7 +6,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/pkg/errors"
-	vscale "github.com/vscale/go-vscale"
+	vscale "github.com/vganyn/go-vscale"
 )
 
 func resourceScalet() *schema.Resource {
@@ -18,12 +18,17 @@ func resourceScalet() *schema.Resource {
 		Delete: resourceScaletDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"hostname": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
+                        "name": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
 			},
-			"make_from": &schema.Schema{
+			"meake_from": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
@@ -55,6 +60,7 @@ func resourceScalet() *schema.Resource {
 func resourceScaletCreate(d *schema.ResourceData, m interface{}) error {
 	client := m.(*vscale.WebClient)
 
+	hostname := d.Get("hostname").(string)
 	name := d.Get("name").(string)
 	from := d.Get("make_from").(string)
 	plan := d.Get("rplan").(string)
@@ -89,7 +95,7 @@ func resourceScaletCreate(d *schema.ResourceData, m interface{}) error {
 		}
 	}
 
-	scalet, _, err := client.Scalet.CreateWithoutPassword(from, plan, name, location, true, keyIDS, true)
+	scalet, _, err := client.Scalet.CreateWithoutPassword(hostname, from, plan, name, location, true, keyIDS, true)
 	if err != nil {
 		return errors.Wrap(err, "creating scalet failed")
 	}
