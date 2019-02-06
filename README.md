@@ -24,7 +24,7 @@ Building The Provider
 * go get
 * go build
 * mkdir -p ~/.terraform.d/plugins/
-* mv $GOPATH/bin/terraform-provider-$PROVIDER_NAME ~/.terraform.d/plugins/
+* mv terraform-provider-$PROVIDER_NAME ~/.terraform.d/plugins/
 
 Using the provider
 ----------------------
