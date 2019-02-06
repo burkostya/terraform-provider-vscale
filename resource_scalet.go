@@ -28,7 +28,7 @@ func resourceScalet() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 			},
-			"meake_from": &schema.Schema{
+			"make_from": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
