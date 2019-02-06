@@ -19,7 +19,7 @@ Building The Provider
 * export PROVIDER_NAME=vscale
 * mkdir -p $GOPATH/src/github.com/terraform-providers
 * cd $GOPATH/src/github.com/terraform-providers
-* git clone https://github.com/burkostya/terraform-provider-vscale
+* git clone https://github.com/vganyn/terraform-provider-vscale
 * cd $GOPATH/src/github.com/terraform-providers/terraform-provider-$PROVIDER_NAME
 * go get
 * go build
