@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
-	vscale "github.com/vscale/go-vscale"
+	vscale "github.com/vganyn/go-vscale"
 )
 
 // Provider returns a schema.Provider for VScale.

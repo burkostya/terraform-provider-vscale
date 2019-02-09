@@ -7,7 +7,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/pkg/errors"
-	vscale "github.com/vscale/go-vscale"
+	vscale "github.com/vganyn/go-vscale"
 )
 
 func resourceRecord() *schema.Resource {
