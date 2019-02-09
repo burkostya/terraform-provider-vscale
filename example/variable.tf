@@ -33,6 +33,6 @@ variable "devs" {
 
   type    = "list"
 
-  default = ["dev1.vganin", "dev2.vganin"]
+  default = ["dev1", "dev2"]
 
 }
