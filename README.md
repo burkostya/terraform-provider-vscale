@@ -29,4 +29,4 @@ Building The Provider
 Using the provider
 ----------------------
 
-See the [DigitalOcean Provider documentation](https://www.terraform.io/docs/providers/do/index.html) to get started using the DigitalOcean provider.
+See [example](https://github.com/vganyn/terraform-provider-vscale/tree/master/example) to create scalets from list defined in devs variable.
